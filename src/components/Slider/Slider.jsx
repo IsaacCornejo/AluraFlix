@@ -22,6 +22,9 @@ export const VideoMiniatura = styled.img`
   @media screen and (min-width: 0) and (max-width: 768px) {
     width: 200px;
   }
+  @media screen and (min-width: 768px) and (max-width: 992px) {
+    width: 300px;
+  }
 `;
 
 export const TituloCategoria = styled.h2`

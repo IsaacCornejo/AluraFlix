@@ -5,7 +5,9 @@ import { Container } from "./../components/Slider/Slider";
 import styled from "styled-components";
 
 const SliderContainer = styled(Container)`
-  margin-top: 400px;
+  @media screen and (min-width: 0) and (max-width: 768px) {
+    margin-top: 300px;
+  }
 `;
 
 const DivPrincipal = styled.div`
