@@ -7,6 +7,9 @@ const Select = styled.select`
   color: white;
   height: 50px;
   padding-left: 8px;
+  @media screen and (min-width: 0) and (max-width: 768px) {
+    width: 83%;
+  }
 `;
 const Option = styled.option`
   box-sizing: border-box;

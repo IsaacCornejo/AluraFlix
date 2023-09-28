@@ -33,6 +33,16 @@ const FooterContainer = styled.div`
   }
 `;
 
+const Descripcion = styled.p`
+  color: white;
+  margin-left: 1rem;
+`;
+
+const TituloVideo = styled.h2`
+  margin-left: 1rem;
+  color: white;
+`;
+
 const VideoCompleto = ({ videos, categorias }) => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -53,13 +63,19 @@ const VideoCompleto = ({ videos, categorias }) => {
           {videos.map(
             (video) =>
               videoId === video.valorId && (
-                <VideoComponente
-                  src={video.valorLinkVideo}
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                ></VideoComponente>
+                <>
+                  <VideoComponente
+                    src={video.valorLinkVideo}
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></VideoComponente>
+                  <TituloVideo>{video.valorTitulo}</TituloVideo>
+                  <Descripcion>
+                    Descripcion: {video.valorDescripcion}
+                  </Descripcion>
+                </>
               )
           )}
 

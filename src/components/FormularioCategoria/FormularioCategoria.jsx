@@ -21,6 +21,9 @@ const InputColor = styled.input`
   box-sizing: border-box;
   padding: 8px;
   margin-bottom: 1rem;
+  @media screen and (min-width: 0) and (max-width: 768px) {
+    width: 83%;
+  }
 `;
 
 const Div = styled.div`
