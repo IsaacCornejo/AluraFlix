@@ -4,11 +4,33 @@ import { useLocation } from "react-router-dom";
 import Relacionados from "../components/Relacionados/Relacionados";
 import { Link } from "react-router-dom";
 import LogoRestauraFlix from "./../img/Logo.png";
+import Footer from "./../components/Footer/Footer";
 
 const VideoComponente = styled.iframe`
   width: 100%;
   height: 50vh;
   margin: 0 auto;
+  margin-top: 4rem;
+  @media screen and (min-width: 0) and (max-width: 768px) {
+    width: 100%;
+    height: 200px;
+  }
+`;
+
+const Container = styled.div`
+  background-color: black;
+  position: relative;
+  @media screen and (min-width: 0) and (max-width: 768px) {
+    height: 100vh;
+  }
+`;
+
+const FooterContainer = styled.div`
+  width: 100%;
+  position: absolute;
+  @media screen and (min-width: 0) and (max-width: 768px) {
+    bottom: 0;
+  }
 `;
 
 const VideoCompleto = ({ videos, categorias }) => {
@@ -18,7 +40,7 @@ const VideoCompleto = ({ videos, categorias }) => {
   const category = queryParams.get("category");
 
   return (
-    <>
+    <Container>
       {
         <div>
           <Nav>
@@ -58,7 +80,11 @@ const VideoCompleto = ({ videos, categorias }) => {
           })}
         </div>
       }
-    </>
+
+      <FooterContainer>
+        <Footer />
+      </FooterContainer>
+    </Container>
   );
 };
 
