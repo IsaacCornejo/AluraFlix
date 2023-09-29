@@ -19,6 +19,8 @@ export const SliderContainer = styled.section`
 export const VideoMiniatura = styled.img`
   border: 4px solid ${(props) => props.color};
   cursor: pointer;
+  width: 400px;
+  height: 250px;
   @media screen and (min-width: 0) and (max-width: 768px) {
     width: 200px;
   }

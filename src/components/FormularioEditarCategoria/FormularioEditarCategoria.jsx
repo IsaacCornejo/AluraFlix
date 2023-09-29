@@ -51,6 +51,34 @@ const Formulario = ({
     display: flex;
   `;
 
+  const [errores, setError] = useState([
+    {
+      titulo: "Titulo",
+      errorMessage: "",
+      valid: "true",
+    },
+    {
+      titulo: "Link del video",
+      errorMessage: "",
+      valid: "true",
+    },
+    {
+      titulo: "Link de la miniatura del video",
+      errorMessage: "",
+      valid: "true",
+    },
+    {
+      titulo: "Descripcion del video",
+      errorMessage: "",
+      valid: "true",
+    },
+    {
+      titulo: "Codigo de seguridad",
+      errorMessage: "",
+      valid: "true",
+    },
+  ]);
+
   return (
     <>
       {
@@ -62,12 +90,14 @@ const Formulario = ({
               label="Nombre"
               value={titulo}
               actualizarValor={setTitulo}
+              errores={errores}
             />
             <Campo
               type="text"
               label="Descripcion"
               value={descripcion}
               actualizarValor={setDescripcion}
+              errores={errores}
             />
             <InputColor
               type="color"

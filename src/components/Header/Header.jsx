@@ -94,13 +94,13 @@ const Header = () => {
           </Nav>
           <HeaderInfo>
             <InfoText>
-              <BtnFrontEnd>Lorem Ipsum</BtnFrontEnd>
+              <BtnFrontEnd>Videos diarios</BtnFrontEnd>
               <TextHeaderInfo>
-                <h2>Challenge React</h2>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Expedita quo dolorum ut rem, nobis ratione, quisquam culpa quos
-                deleniti labore assumenda qui animi? Odio at officia voluptate
-                praesentium eligendi assumenda.
+                <h2>Cocina Facilmente</h2>
+                Explora nuestras categorías de recetas, que van desde cocina
+                internacional hasta opciones vegetarianas y saludables. Además,
+                podrás aprender técnicas de cocción, consejos de presentación y
+                trucos de cocina de nuestros expertos culinarios.
               </TextHeaderInfo>
             </InfoText>
             <VideoHeaderInfo

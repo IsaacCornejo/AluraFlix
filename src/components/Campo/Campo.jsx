@@ -28,6 +28,16 @@ const Container = styled.div`
   width: 90%;
   box-sizing: border-box;
   padding: 1rem;
+  position: relative;
+`;
+
+const SpanErrorMessage = styled.span`
+  font-size: 0.8rem;
+  position: absolute;
+  color: red;
+  bottom: 12px;
+  left: 15px;
+  font-weight: bold;
 `;
 
 const Campo = ({
@@ -36,6 +46,8 @@ const Campo = ({
   type = "text",
   value,
   actualizarValor,
+  validarInput,
+  errores,
 }) => {
   const manejarValor = (e) => {
     actualizarValor(e.target.value);
@@ -46,7 +58,25 @@ const Campo = ({
       {
         <Container>
           <Label placeholder={placeholder}>{label}</Label>
-          <Input type={type} onChange={manejarValor} value={value} required />
+          <Input
+            type={type}
+            onChange={manejarValor}
+            value={value}
+            onBlur={(e) => validarInput(e.target.value, label)}
+          />
+
+          {errores.map((error) => {
+            if (error.titulo === label) {
+              return (
+                <>
+                  <SpanErrorMessage key={error.titulo}>
+                    {error.errorMessage}
+                  </SpanErrorMessage>
+                </>
+              );
+            }
+            return null;
+          })}
         </Container>
       }
     </>

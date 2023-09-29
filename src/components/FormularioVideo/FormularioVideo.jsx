@@ -43,7 +43,6 @@ const Formulario = ({ nuevoVideo, categorias }) => {
     setValorCategoria("");
     setValorDescripcion("");
     setValorId("");
-    console.log("Limpiado");
   };
 
   const enviarValores = () => {
@@ -58,6 +57,54 @@ const Formulario = ({ nuevoVideo, categorias }) => {
     nuevoVideo(data);
   };
 
+  const [errores, setError] = useState([
+    {
+      titulo: "Titulo",
+      errorMessage: "",
+      valid: "true",
+    },
+    {
+      titulo: "Link del video",
+      errorMessage: "",
+      valid: "true",
+    },
+    {
+      titulo: "Link de la miniatura del video",
+      errorMessage: "",
+      valid: "true",
+    },
+    {
+      titulo: "Descripcion del video",
+      errorMessage: "",
+      valid: "true",
+    },
+    {
+      titulo: "Codigo de seguridad",
+      errorMessage: "",
+      valid: "true",
+    },
+  ]);
+
+  const validarInput = (valor, titulo) => {
+    const errorActualizado = errores.map((error) => {
+      if (valor.length === 0 && titulo === error.titulo) {
+        return {
+          ...error,
+          errorMessage: "Campo requerido",
+          valid: "false",
+        };
+      } else {
+        return {
+          ...error,
+          errorMessage: "",
+          valid: "true",
+        };
+      }
+    });
+    setError(errorActualizado);
+    console.log("Validado");
+  };
+
   return (
     <>
       {
@@ -67,21 +114,29 @@ const Formulario = ({ nuevoVideo, categorias }) => {
             label="Titulo"
             value={valorTitulo}
             actualizarValor={setValorTitulo}
+            validarInput={validarInput}
+            errores={errores}
           />
           <Campo
             label="Link del video"
             value={valorLinkVideo}
             actualizarValor={setValorLinkVideo}
+            validarInput={validarInput}
+            errores={errores}
           />
           <Campo
             label="Link de la miniatura del video"
             value={valorMiniatura}
             actualizarValor={setValorMiniatura}
+            validarInput={validarInput}
+            errores={errores}
           />
           <Campo
             label="Descripcion del video"
             value={valorDescripcion}
             actualizarValor={setValorDescripcion}
+            validarInput={validarInput}
+            errores={errores}
           />
           <ListaOpciones
             categorias={categorias}
@@ -92,6 +147,8 @@ const Formulario = ({ nuevoVideo, categorias }) => {
             label="Codigo de seguridad"
             value={valorId}
             actualizarValor={setValorId}
+            validarInput={validarInput}
+            errores={errores}
           />
           <Div>
             <div>

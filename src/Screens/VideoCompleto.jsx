@@ -21,7 +21,7 @@ const Container = styled.div`
   background-color: black;
   position: relative;
   @media screen and (min-width: 0) and (max-width: 768px) {
-    height: 100vh;
+    height: 100%;
   }
 `;
 
@@ -29,7 +29,7 @@ const FooterContainer = styled.div`
   width: 100%;
   position: absolute;
   @media screen and (min-width: 0) and (max-width: 768px) {
-    bottom: 0;
+    bottom: 50px;
   }
 `;
 
@@ -42,6 +42,8 @@ const TituloVideo = styled.h2`
   margin-left: 1rem;
   color: white;
 `;
+
+const VideoCocina = styled.video``;
 
 const VideoCompleto = ({ videos, categorias }) => {
   const location = useLocation();
@@ -97,6 +99,7 @@ const VideoCompleto = ({ videos, categorias }) => {
         </div>
       }
 
+      <VideoCocina src="./../"></VideoCocina>
       <FooterContainer>
         <Footer />
       </FooterContainer>

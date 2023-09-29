@@ -48,6 +48,64 @@ const Formulario = ({ nuevaCategoria, tituloFormulario }) => {
     nuevaCategoria({ titulo, descripcion, color, id });
   };
 
+  const [errores, setError] = useState([
+    {
+      titulo: "Titulo",
+      errorMessage: "",
+      valid: "true",
+    },
+    {
+      titulo: "Link del video",
+      errorMessage: "",
+      valid: "true",
+    },
+    {
+      titulo: "Link de la miniatura del video",
+      errorMessage: "",
+      valid: "true",
+    },
+    {
+      titulo: "Descripcion del video",
+      errorMessage: "",
+      valid: "true",
+    },
+    {
+      titulo: "Codigo de seguridad",
+      errorMessage: "",
+      valid: "true",
+    },
+    {
+      titulo: "Nombre",
+      errorMessage: "",
+      valid: "true",
+    },
+    {
+      titulo: "Descripcion",
+      errorMessage: "",
+      valid: "true",
+    },
+  ]);
+
+  const validarInput = (valor, titulo) => {
+    const errorActualizado = errores.map((error) => {
+      if (valor.length === 0 && titulo === error.titulo) {
+        return {
+          ...error,
+          errorMessage: "Campo requerido",
+          valid: "false",
+        };
+      } else {
+        return {
+          ...error,
+          errorMessage: "",
+          valid: "true",
+        };
+      }
+    });
+    setError(errorActualizado);
+    console.log("Validado");
+  };
+
   return (
     <>
       {
@@ -59,12 +117,16 @@ const Formulario = ({ nuevaCategoria, tituloFormulario }) => {
               label="Nombre"
               value={titulo}
               actualizarValor={setTitulo}
+              validarInput={validarInput}
+              errores={errores}
             />
             <Campo
               type="text"
               label="Descripcion"
               value={descripcion}
               actualizarValor={setDescripcion}
+              validarInput={validarInput}
+              errores={errores}
             />
             <InputColor
               type="color"
@@ -78,6 +140,8 @@ const Formulario = ({ nuevaCategoria, tituloFormulario }) => {
               label="Codigo de seguridad"
               value={id}
               actualizarValor={setId}
+              validarInput={validarInput}
+              errores={errores}
             />
             <Div>
               <BtnFormulario onClick={enviarValores}>Guardar</BtnFormulario>

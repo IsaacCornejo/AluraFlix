@@ -3,6 +3,16 @@ import Formulario from "../components/FormularioVideo/FormularioVideo";
 import Footer from "../components/Footer/Footer";
 import LogoRestauraFlix from "./../img/Logo.png";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+const FooterContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  @media screen and (min-width: 0) and (max-width: 768px) {
+    bottom: -60px;
+  }
+`;
 
 const FormularioNuevoVideo = ({ nuevoVideo, categorias }) => {
   return (
@@ -14,7 +24,9 @@ const FormularioNuevoVideo = ({ nuevoVideo, categorias }) => {
         <Btn to="/">Inicio</Btn>
       </Nav>
       <Formulario nuevoVideo={nuevoVideo} categorias={categorias}></Formulario>
-      <Footer />
+      <FooterContainer>
+        <Footer />
+      </FooterContainer>
     </div>
   );
 };
