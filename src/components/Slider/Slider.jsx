@@ -23,9 +23,11 @@ export const VideoMiniatura = styled.img`
   height: 250px;
   @media screen and (min-width: 0) and (max-width: 768px) {
     width: 200px;
+    height: 130px;
   }
   @media screen and (min-width: 768px) and (max-width: 992px) {
     width: 300px;
+    height: 200px;
   }
 `;
 
