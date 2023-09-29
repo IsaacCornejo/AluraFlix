@@ -10,7 +10,7 @@ const FooterContainer = styled.div`
   bottom: 0;
   width: 100%;
   @media screen and (min-width: 0) and (max-width: 768px) {
-    bottom: -60px;
+    bottom: -160px;
   }
 `;
 

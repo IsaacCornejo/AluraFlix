@@ -87,7 +87,9 @@ const VideoCompleto = ({ videos, categorias }) => {
                 {categoria.titulo === category && (
                   <Relacionados
                     videos={videos.filter(
-                      (video) => video.valorCategoria === categoria.titulo
+                      (video) =>
+                        video.valorCategoria === categoria.titulo &&
+                        video.valorId !== videoId
                     )}
                     categorias={categorias}
                     categoria={categoria}

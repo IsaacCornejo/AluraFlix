@@ -54,6 +54,10 @@ const FormularioCategoria = ({
 
   const editarCategoria = categorias.filter((categoria) => categoria.id === id);
 
+  const validarInput = (value) => {
+    console.log(value);
+  };
+
   return (
     <>
       {
@@ -73,6 +77,7 @@ const FormularioCategoria = ({
             data={editarCategoria}
             manejarEnvioEditarCategoria={manejarEnvioEditarCategoria}
             categoriaVideo={categoria}
+            validarInput={validarInput}
           ></FormularioEditarCategoria>
 
           {/* <Table>

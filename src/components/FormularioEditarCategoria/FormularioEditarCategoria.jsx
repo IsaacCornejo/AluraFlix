@@ -79,6 +79,10 @@ const Formulario = ({
     },
   ]);
 
+  const validarInput = (value) => {
+    console.log(value);
+  };
+
   return (
     <>
       {
@@ -91,6 +95,7 @@ const Formulario = ({
               value={titulo}
               actualizarValor={setTitulo}
               errores={errores}
+              validarInput={validarInput}
             />
             <Campo
               type="text"
@@ -98,6 +103,7 @@ const Formulario = ({
               value={descripcion}
               actualizarValor={setDescripcion}
               errores={errores}
+              validarInput={validarInput}
             />
             <InputColor
               type="color"
