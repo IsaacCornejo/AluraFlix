@@ -53,34 +53,46 @@ const Formulario = ({
 
   const [errores, setError] = useState([
     {
-      titulo: "Titulo",
+      titulo: "Nombre",
       errorMessage: "",
       valid: "true",
     },
     {
-      titulo: "Link del video",
-      errorMessage: "",
-      valid: "true",
-    },
-    {
-      titulo: "Link de la miniatura del video",
-      errorMessage: "",
-      valid: "true",
-    },
-    {
-      titulo: "Descripcion del video",
-      errorMessage: "",
-      valid: "true",
-    },
-    {
-      titulo: "Codigo de seguridad",
+      titulo: "Descripcion",
       errorMessage: "",
       valid: "true",
     },
   ]);
 
-  const validarInput = (value) => {
-    console.log(value);
+  const validarFormulario = () => {
+    const errorActualizado = errores.map((error) => {
+      if (titulo === "" && descripcion === "") {
+        return {
+          ...error,
+          errorMessage: "Campo requerido",
+          valid: "false",
+        };
+      }
+      return error;
+    });
+    setError(errorActualizado);
+    console.log("Validado");
+  };
+
+  const validarInput = (valor, titulo) => {
+    console.log(valor, titulo);
+    const errorActualizado = errores.map((error) => {
+      if (titulo === error.titulo) {
+        return {
+          ...error,
+          errorMessage: valor.length === 0 ? "Campo requerido" : "",
+          valid: "false",
+        };
+      }
+      return error;
+    });
+    setError(errorActualizado);
+    console.log("Validado");
   };
 
   return (
@@ -122,6 +134,7 @@ const Formulario = ({
                     datosAEditar.id,
                     categoriaVideo
                   );
+                  validarFormulario(titulo, descripcion);
                 }}
               >
                 Guardar

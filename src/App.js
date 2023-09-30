@@ -266,13 +266,15 @@ function App() {
       }
       return categoria;
     });
-    setCategories(categoriasEditadas);
+    if (!(titulo === undefined && descripcion === undefined)) {
+      setCategories(categoriasEditadas);
+    }
 
     const videosEditados = videos.map((video) => {
       if (video.valorCategoria === categoriaVideo) {
         return {
           ...video,
-          valorCategoria: titulo, // Puedes actualizar otros campos si es necesario
+          valorCategoria: titulo,
         };
       }
       return video;

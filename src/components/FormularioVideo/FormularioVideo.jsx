@@ -54,7 +54,17 @@ const Formulario = ({ nuevoVideo, categorias }) => {
       valorCategoria,
       valorId,
     };
-    nuevoVideo(data);
+
+    if (
+      !(valorTitulo === "",
+      valorLinkVideo === "",
+      valorMiniatura === "",
+      valorDescripcion === "",
+      valorCategoria === "",
+      valorId === "")
+    ) {
+      nuevoVideo(data);
+    }
   };
 
   const [errores, setError] = useState([
@@ -83,23 +93,54 @@ const Formulario = ({ nuevoVideo, categorias }) => {
       errorMessage: "",
       valid: "true",
     },
+    {
+      titulo: "Lista Opciones",
+      errorMessage: "",
+      valid: "true",
+    },
   ]);
 
   const validarInput = (valor, titulo) => {
     const errorActualizado = errores.map((error) => {
-      if (valor.length === 0 && titulo === error.titulo) {
+      if (titulo === error.titulo) {
+        return {
+          ...error,
+          errorMessage: valor.length === 0 ? "Campo requerido" : "",
+          valid: "false",
+        };
+      }
+      return error;
+    });
+    setError(errorActualizado);
+    console.log("Validado");
+  };
+
+  const validarFormulario = (data) => {
+    const {
+      valorTitulo,
+      valorLinkVideo,
+      valorMiniatura,
+      valorDescripcion,
+      valorCategoria,
+      valorId,
+    } = data;
+
+    const errorActualizado = errores.map((error) => {
+      if (
+        valorTitulo === "" &&
+        valorLinkVideo === "" &&
+        valorMiniatura === "" &&
+        valorDescripcion === "" &&
+        valorCategoria === "" &&
+        valorId === ""
+      ) {
         return {
           ...error,
           errorMessage: "Campo requerido",
           valid: "false",
         };
-      } else {
-        return {
-          ...error,
-          errorMessage: "",
-          valid: "true",
-        };
       }
+      return error;
     });
     setError(errorActualizado);
     console.log("Validado");
@@ -152,7 +193,21 @@ const Formulario = ({ nuevoVideo, categorias }) => {
           />
           <Div>
             <div>
-              <BtnFormulario onClick={enviarValores}>Guardar</BtnFormulario>
+              <BtnFormulario
+                onClick={() => {
+                  enviarValores();
+                  validarFormulario({
+                    valorTitulo,
+                    valorLinkVideo,
+                    valorMiniatura,
+                    valorDescripcion,
+                    valorCategoria,
+                    valorId,
+                  });
+                }}
+              >
+                Guardar
+              </BtnFormulario>
               <BtnFormulario onClick={limpiarFormulario}>Limpiar</BtnFormulario>
             </div>
             <BtnFormulario to={"/nueva-categoria"}>
