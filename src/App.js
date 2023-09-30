@@ -7,6 +7,7 @@ import FormularioNuevoVideo from "./Screens/FormularioNuevoVideo";
 import FormularioNuevaCategoria from "./Screens/FormularioNuevaCategoria";
 import VideoCompleto from "./Screens/VideoCompleto";
 import EditarCategoria from "./Screens/EditarCategoria";
+import Error404 from "./Screens/Error404";
 
 function App() {
   const [videos, setVideos] = useState([
@@ -286,13 +287,14 @@ function App() {
     {
       path: "/",
       element: <Home videos={videos} categorias={categorias} />,
-      errorElement: <h1>Error</h1>,
+      errorElement: <Error404 />,
     },
     {
       path: "/nuevo-video",
       element: (
         <FormularioNuevoVideo nuevoVideo={nuevoVideo} categorias={categorias} />
       ),
+      errorElement: <Error404 />,
     },
     {
       path: "/nueva-categoria",
@@ -303,10 +305,12 @@ function App() {
           categorias={categorias}
         />
       ),
+      errorElement: <Error404 />,
     },
     {
       path: "/ver-video",
       element: <VideoCompleto videos={videos} categorias={categorias} />,
+      errorElement: <Error404 />,
     },
     {
       path: "/editar-categoria",
@@ -318,6 +322,7 @@ function App() {
           categorias={categorias}
         />
       ),
+      errorElement: <Error404 />,
     },
   ]);
 

@@ -49,7 +49,7 @@ const HeaderInfo = styled.section`
     flex-direction: column;
   }
 `;
-const InfoText = styled.div`
+export const InfoText = styled.div`
   color: white;
   display: flex;
   flex-direction: column;
